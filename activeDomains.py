@@ -60639,7 +60639,6 @@ activeDomainsList = [
 'steamanalystics.com',
 'steamcommunitiuy.com',
 'steamcommunity.ca',
-'steamcommunity.com',
 'steamcommunity.com.entseigneurie.com',
 'steamcommunity-comn.info',
 'steamcommunity-proxy.51ias.com',
