@@ -34,36 +34,41 @@ async def on_ready():
 @client.event
 async def on_message(message):
     
-    #checks if netwatch send the link
-    if message.author == client.user:
-        return
+    #checks if the message contains a "." before comparing it with the db
+    if '.' in message.content:
+        print('checked message')
+        #checks if netwatch send the link
+        if message.author == client.user:
+            return
     
-    #detects the links and delets it if necessary
-    for item in activeDomainsList:
-        if re.search(r'\b' + re.escape(item) + r'\b', message.content):
-            await message.delete()
-            embed = discord.Embed(description=f'The domain in your message was identified as malicious. If you think that this is a mistake, please report it in our [discord](https://discord.gg/YYMXMvyUX8).', colour=discord.Colour.teal())
-            embed.set_footer(text='https://discord.gg/YYMXMvyUX8', icon_url='https://cdn.discordapp.com/app-icons/1178385597786763274/eabc31fc418856348bfe666af6ee1458.png?size=512')
-            await message.channel.send(embed=embed)
+        #detects the links and delets it if necessary
+        for item in activeDomainsList:
+            if re.search(r'\b' + re.escape(item) + r'\b', message.content):
+                await message.delete()
+                embed = discord.Embed(description=f'The domain in your message was identified as malicious. If you think that this is a mistake, please report it in our [discord](https://discord.gg/YYMXMvyUX8).', colour=discord.Colour.teal())
+                embed.set_footer(text='https://discord.gg/YYMXMvyUX8', icon_url='https://cdn.discordapp.com/app-icons/1178385597786763274/eabc31fc418856348bfe666af6ee1458.png?size=512')
+                await message.channel.send(embed=embed)
             
-            #sends report into logs
-            embed = discord.Embed(title='Message Deleted', colour=discord.Colour.red())
-            embed.add_field(name='Author: ', value=f"```{message.author}```")
-            embed.add_field(name='Content: ', value=f"```\n{message.content}\n```", inline=False)
-            embed.set_footer(text='Report false positives on our discord! /help', icon_url='https://cdn.discordapp.com/app-icons/1178385597786763274/eabc31fc418856348bfe666af6ee1458.png?size=512')
-            netwatch_logs_channel = await get_netwatch_logs_channel(message.guild)
-            if netwatch_logs_channel:
-                await netwatch_logs_channel.send(embed=embed)
-            else:
-                #creates logs channel if necessary
-                overwrites = {
-                    message.guild.default_role: discord.PermissionOverwrite(read_messages=False),
-                    message.guild.me: discord.PermissionOverwrite(read_messages=True)
-                }
-                new_channel = await message.guild.create_text_channel('netwatch-logs', overwrites=overwrites)
-                await new_channel.send(f"Created netwatch-logs channel.")
-                await new_channel.send(embed=embed)
-            break
+                #sends report into logs
+                embed = discord.Embed(title='Message Deleted', colour=discord.Colour.red())
+                embed.add_field(name='Author: ', value=f"```{message.author}```")
+                embed.add_field(name='Content: ', value=f"```\n{message.content}\n```", inline=False)
+                embed.set_footer(text='Report false positives on our discord! /help', icon_url='https://cdn.discordapp.com/app-icons/1178385597786763274/eabc31fc418856348bfe666af6ee1458.png?size=512')
+                netwatch_logs_channel = await get_netwatch_logs_channel(message.guild)
+                if netwatch_logs_channel:
+                    await netwatch_logs_channel.send(embed=embed)
+                else:
+                    #creates logs channel if necessary
+                    overwrites = {
+                        message.guild.default_role: discord.PermissionOverwrite(read_messages=False),
+                        message.guild.me: discord.PermissionOverwrite(read_messages=True)
+                    }
+                    new_channel = await message.guild.create_text_channel('netwatch-logs', overwrites=overwrites)
+                    await new_channel.send(f"Created netwatch-logs channel.")
+                    await new_channel.send(embed=embed)
+                break
+    else:
+        return
 
 #function to get the logs channel
 async def get_netwatch_logs_channel(guild):
