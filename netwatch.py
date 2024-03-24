@@ -88,4 +88,31 @@ async def help(interaction):
     embed = discord.Embed(title='Help', description=f'**Join our discord for help:**\nhttps://discord.gg/YYMXMvyUX8', colour=discord.Colour.teal())
     await interaction.response.send_message(embed=embed)
 
+#scans a link provided by a user | contributed by TheInternetSadDev
+@client.tree.command(description='Scans a link provided by a user.')
+async def scan(interaction, link: str):
+    await interaction.response.defer()
+    
+    is_malicious = False
+    for item in activeDomainsList:
+        if re.search(r'\b' + re.escape(item) + r'\b', link):
+            is_malicious = True
+            break
+
+    if is_malicious:
+        embed = discord.Embed(
+            title="Scan Result",
+            description=f'The provided link `{link}` was identified as malicious.',
+            colour=discord.Colour.red())
+    else:
+        embed = discord.Embed(
+            title="Scan Result",
+            description=f'The provided link `{link}` is not in the malicious domain database.',
+            colour=discord.Colour.green())
+
+
+    embed.set_thumbnail(url=client.user.avatar)
+
+    await interaction.followup.send(embed=embed)
+
 client.run(token)
