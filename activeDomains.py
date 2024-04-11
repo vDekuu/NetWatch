@@ -65395,7 +65395,6 @@ activeDomainsList = [
 'twisted-advances.000webhostapp.com',
 'twitbox.000webhostapp.com',
 'twitkep.com',
-'twitter.com',
 'twittercustomerservice.com',
 'twitterlike.com.br',
 'twitter-pw.com',
