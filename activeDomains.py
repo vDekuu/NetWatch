@@ -17153,7 +17153,6 @@ activeDomainsList = [
 'docs-apple.com',
 'docsdermgroup.com',
 'docs.esffl.pt',
-'docs.google.com',
 'docsirpf1.sfo2.digitaloceanspaces.com',
 'doc-spa.com',
 'doc-spa.net',
