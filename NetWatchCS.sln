@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetWatchCS", "NetWatchCS\NetWatchCS.csproj", "{D5E635CB-5D05-431E-B818-982EA1339AFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5E635CB-5D05-431E-B818-982EA1339AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E635CB-5D05-431E-B818-982EA1339AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E635CB-5D05-431E-B818-982EA1339AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E635CB-5D05-431E-B818-982EA1339AFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {198C699F-19B0-41DA-904E-8D06CD2C7728}
+	EndGlobalSection
+EndGlobal
