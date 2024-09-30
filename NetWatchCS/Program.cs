@@ -1,4 +1,4 @@
-﻿using DSharpPlus;
+using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Entities;
 using DSharpPlus.EventArgs;
@@ -79,13 +79,8 @@ namespace NetWatchCS
                         }
                         .WithFooter("https://discord.gg/YYMXMvyUX8", "https://cdn.discordapp.com/app-icons/1178385597786763274/eabc31fc418856348bfe666af6ee1458.png?size=512");
                         await message.Channel.SendMessageAsync(chatEmbed);
-                        
 
-                        var guild = client.Guilds.Values.FirstOrDefault();
-                        if (guild != null)
-                        {
-                            var channel = guild.Channels;
-                        }
+                        var guild = message.Guild;
 
                         var logChannel = guild.Channels.Values.FirstOrDefault(c => c.Name.Equals("netwatch-logs"));
                         if (logChannel == null)
