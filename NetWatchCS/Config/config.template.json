@@ -1,0 +1,5 @@
+//rename this file (or create one with the same structure) to config.json
+{
+  "token": "YOUR BOT TOKEN",
+  "prefix": ";"
+}
