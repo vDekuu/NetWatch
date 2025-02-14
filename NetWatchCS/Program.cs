@@ -137,7 +137,7 @@ namespace NetWatchCS
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] values = line.Split(',');
+                    string[] values = line.Split('\n');
 
                     foreach (var value in values)
                     {
