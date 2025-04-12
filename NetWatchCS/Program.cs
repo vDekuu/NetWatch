@@ -39,6 +39,7 @@ namespace NetWatchCS
 
             slash.RegisterCommands<HelpCommand>();
             slash.RegisterCommands<CheckCommand>();
+            slash.RegisterCommands<ToSCommand>();
 
             await Client.ConnectAsync();
             Console.WriteLine("NetWatch is online");
