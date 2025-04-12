@@ -16,7 +16,7 @@ namespace NetWatchCS.Commands
             var privacyEmbed = new DiscordEmbedBuilder
             {
                 Title = "Terms of Service",
-                Description = "**Our privacy policy can be found at https://netwatch-bot.com/privacy**",
+                Description = "**Our privacy policy can be found at:**\nhttps://netwatch-bot.com/privacy",
                 Color = new DiscordColor("#1abc9c"),
             };
 
