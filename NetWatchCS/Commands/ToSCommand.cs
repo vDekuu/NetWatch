@@ -12,7 +12,7 @@ namespace NetWatchCS.Commands
             var tosEmbed = new DiscordEmbedBuilder
             {
                 Title = "Terms of Service",
-                Description = "**Our Terms of Service can be found at:**\nhttps://netwatch-bot.com/tos",
+                Description = "**Our terms of service can be found at:**\nhttps://netwatch-bot.com/tos",
                 Color = new DiscordColor("#1abc9c"),
             };
 
