@@ -11,6 +11,7 @@ namespace NetWatchCS.Commands
 {
     public class ToSCommand : ApplicationCommandModule
     {
+        [SlashCommand("tos", "Link to the terms of service.")]
         public async Task ToSCommandTask(InteractionContext ctx)
         {
             var tosEmbed = new DiscordEmbedBuilder

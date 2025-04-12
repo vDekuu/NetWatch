@@ -11,6 +11,7 @@ namespace NetWatchCS.Commands
 {
     public class PrivacyCommand :ApplicationCommandModule
     {
+        [SlashCommand("privacy", "Link to the privacy policy.")]
         public async Task PrivacyCommandTask(InteractionContext ctx)
         {
             var privacyEmbed = new DiscordEmbedBuilder
