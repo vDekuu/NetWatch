@@ -12,7 +12,7 @@ namespace NetWatchCS.Commands
             var helpEmbed = new DiscordEmbedBuilder
             {
                 Title = "Help",
-                Description = "**Join our discord for help:**\nhttps://discord.gg/YYMXMvyUX8\n\n**ToS:**\nhttps://netwatch-bot.com/#tos\n\n**Privacy Policy:**\nhttps://netwatch-bot.com/#privacy-policy",
+                Description = "**Join our discord for help:**\nhttps://discord.gg/YYMXMvyUX8",
                 Color = new DiscordColor("#1abc9c"),
             };
 
