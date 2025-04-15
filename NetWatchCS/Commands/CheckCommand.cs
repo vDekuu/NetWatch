@@ -1,11 +1,6 @@
 ﻿using DSharpPlus;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetWatchCS.Commands
 {
@@ -18,9 +13,10 @@ namespace NetWatchCS.Commands
 
             foreach (var domain in Program.domainList)
             {
-                if (link.Contains(domain))
+                if (link.Contains(domain.Domain))
                 {
                    badLink = true;
+                    break;
                 }
             }
 

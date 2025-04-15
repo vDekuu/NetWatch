@@ -5,6 +5,7 @@ using DSharpPlus.EventArgs;
 using DSharpPlus.SlashCommands;
 using NetWatchCS.Commands;
 using NetWatchCS.Config;
+using NetWatchCS.Models;
 
 namespace NetWatchCS
 {
@@ -13,7 +14,8 @@ namespace NetWatchCS
         public static DiscordClient Client { get; set; }
         public static CommandsNextExtension Commands { get; set; }
         public static SlashCommandsExtension SlashCommands { get; set; }
-        public static List<string> domainList = LoadCsvFiles();
+        public static NetwatchContext db = new NetwatchContext();
+        public static List<ActiveDomain> domainList  = db.ActiveDomains.ToList();
 
         public static async Task Main(string[] args)
         {
@@ -67,11 +69,10 @@ namespace NetWatchCS
             if (!message.Author.IsBot)
             {
                 string messageContent = message.Message.Content;
-                
 
                 foreach (var domain in domainList)
                 {
-                    if (messageContent.Contains(domain))
+                    if (messageContent.Contains(domain.Domain))
                     {
                         message.Message.DeleteAsync();
                         var chatEmbed = new DiscordEmbedBuilder
@@ -129,27 +130,28 @@ namespace NetWatchCS
             return logChannel;
         }
 
-        public static List<string> LoadCsvFiles()
-        {
-            var csvFiles = new List<string>();
-            string filePath = "Domains/activeDomains.csv";
+        //Switched to an Sqlite database instead of a csv file
+        //public static List<string> LoadCsvFiles()
+        //{
+        //    var csvFiles = new List<string>();
+        //    string filePath = "Domains/activeDomains.csv";
 
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] values = line.Split('\n');
+        //    using (StreamReader reader = new StreamReader(filePath))
+        //    {
+        //        string line;
+        //        while ((line = reader.ReadLine()) != null)
+        //        {
+        //            string[] values = line.Split('\n');
 
-                    foreach (var value in values)
-                    {
-                        csvFiles.Add(value);
-                    }
-                }
-            }
-            Console.WriteLine("Loaded CSV file");
-            return csvFiles;
-        }
+        //            foreach (var value in values)
+        //            {
+        //                csvFiles.Add(value);
+        //            }
+        //        }
+        //    }
+        //    Console.WriteLine("Loaded CSV file");
+        //    return csvFiles;
+        //}
 
         private static async Task UpdateStatus()
         {

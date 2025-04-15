@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace NetWatchCS.Models;
+﻿namespace NetWatchCS.Models;
 
 public partial class ActiveDomain
 {
-    public string? Domain { get; set; }
+    public int Id { get; set; }
+    public string Domain { get; set; }
 }
