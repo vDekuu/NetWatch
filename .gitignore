@@ -401,3 +401,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/NetWatchCS/Domains/netwatch.db
+/NetWatchCS/Domains/netwatch.db
